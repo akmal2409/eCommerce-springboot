@@ -1,2 +1,2 @@
 # eCommerce-springboot 
-## Spring BackEnd + Angular FrontEnd (REST API)
+## Spring Back-end + Angular Front-end (REST API)
