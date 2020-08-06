@@ -7,11 +7,18 @@ Hello! This is my 5th Spring Boot "Talci STORE" eCommerce project. I am trying t
   Project Structure:
   - ecommerce-angular (Frontend)
   - ecommerce-spring-boot (REST API Backend)
+  
+   Project is build based on MVC (Model View Controller) architecture.
+   
+   Read more
+   
+   https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
 
 # Future Plans and Improvements
 * Add Spring Security
 * Add JWT Authentication
 * Deploy using Docker
+* Start using Angular Material
 * More TBA :D
 
 # Clone repository
@@ -42,6 +49,9 @@ Hello! This is my 5th Spring Boot "Talci STORE" eCommerce project. I am trying t
 * Spring Boot
 * Hibernate
 * Project Lombok
+* Angular
+* Bootstrap 4
+* MYSQL (With preloaded 100 sample products)
 
 ## Prerequisites
 * Java 11 or newer
