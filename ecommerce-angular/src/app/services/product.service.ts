@@ -30,6 +30,15 @@ export class ProductService {
       map(response => response._embedded.productCategory)
     );
   }
+
+  // tslint:disable-next-line:typedef
+  searchProducts(keyword: string) {
+
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${keyword}`;
+    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
+      map(response => response._embedded.products)
+    );
+  }
 }
 
 interface GetResponseProducts {
