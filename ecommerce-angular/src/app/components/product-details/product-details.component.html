@@ -1,0 +1,22 @@
+<div class="detail-section">
+  <div class="container-fluid">
+
+   <img src="{{ product.imageUrl }}" class="detail-img">
+
+    <h3>{{ product.name }}</h3>
+    <div class="price">{{ product.unitPrice | currency: 'EUR'}}</div>
+    <a href="#" class="primary-btn">Add to cart</a>
+    <i class="fas fa-shopping-cart ml-2"></i>
+    <div class="row-cols-xl-3 ml-2 mt-2">
+      In stock
+      <div class="badge badge-success ml-1" *ngIf="product.unitsInStock>20">{{ product.unitsInStock }}</div>
+      <div class="badge badge-danger ml-1" *ngIf="product.unitsInStock<20">{{ product.unitsInStock }}</div>
+    </div>
+
+    <hr>
+    <h4>Description</h4>
+    <p>{{ product.description }}</p>
+
+    <a routerLink="/products" class="mt-5"><button class="btn btn-success">Back to Product List</button> </a>
+  </div>
+</div>

@@ -32,12 +32,20 @@ export class ProductService {
   }
 
   // tslint:disable-next-line:typedef
-  searchProducts(keyword: string) {
+  searchProducts(keyword: string): Observable<Product[]> {
 
     const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${keyword}`;
+
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
       map(response => response._embedded.products)
     );
+  }
+
+  getProduct(productId: number): Observable<Product> {
+
+    const searchProductUrl = `${this.baseUrl}/${productId}`;
+
+    return this.httpClient.get<Product>(searchProductUrl);
   }
 }
 
