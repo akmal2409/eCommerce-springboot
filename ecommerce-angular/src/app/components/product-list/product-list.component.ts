@@ -10,10 +10,16 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[];
-  currentCategoryId: number;
+  products: Product[] = [];
+  currentCategoryId = 1;
+  previousCategoryId = 1;
   currentCategoryName: string;
-  searchMode: boolean;
+  searchMode = false;
+
+  // new properties for pagination
+  pageNumber = 1;
+  pageSize = 10;
+  totalElements = 0;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute) { }
@@ -52,10 +58,18 @@ export class ProductListComponent implements OnInit {
       this.currentCategoryName = 'Books';
     }
 
-    this.productService.getProductList(this.currentCategoryId).subscribe(
-      data => {
-        this.products = data;
-      }
+
+    if (this.previousCategoryId != this.currentCategoryId) {
+      this.pageNumber = 1;
+    }
+
+    this.previousCategoryId = this.currentCategoryId;
+
+    console.log(`currentCategoryId=${this.currentCategoryId}, pageNumber=${this.pageNumber}`);
+
+    this.productService.getProductListPagination(this.pageNumber - 1, this.pageSize,
+                                                  this.currentCategoryId).subscribe(
+      this.processResult()
     );
   }
 
@@ -71,4 +85,17 @@ export class ProductListComponent implements OnInit {
     );
   }
 
+  // tslint:disable-next-line:typedef
+  private processResult() {
+    return data => {
+      this.products = data._embedded.products;
+      this.pageNumber = data.page.number + 1;
+      this.pageSize = data.page.size;
+      this.totalElements = data.page.totalElements;
+    };
+  }
+
+  onEdit(){
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
 }
