@@ -1,4 +1,6 @@
 # eCommerce-springboot 
+# Is not under development! New version of TalciStore (from scratch) is available:
+  https://github.com/akmal2409/talcistore-spring-angular
 ## Spring Back-end + Angular Front-end (REST API)
 
 ![Logo](https://github.com/akmal2409/ecommerce-spring-boot-angular/blob/master/ecommerce-angular/src/assets/images/logo.png)
